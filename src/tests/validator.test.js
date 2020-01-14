@@ -6,6 +6,18 @@ test('Успешно', () => {
   expect(received).toBe(true);
 });
 
+test('Успешно (короткое имя)', () => {
+  const validator = new Validator();
+  const received = validator.validateUsername('Ab');
+  expect(received).toBe(true);
+});
+
+test('Ошибка (в начале случайный символ)', () => {
+  const validator = new Validator();
+  const received = validator.validateUsername('*AbcdF_efg-Hi123Jk');
+  expect(received).toBe(false);
+});
+
 test('Ошибка (в начале число)', () => {
   const validator = new Validator();
   const received = validator.validateUsername('5AbcdF_efg-Hi123Jk');
